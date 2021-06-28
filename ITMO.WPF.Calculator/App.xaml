@@ -1,0 +1,27 @@
+﻿<Application x:Class="MyWindowsCalculator.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:MyWindowsCalculator"
+             StartupUri="CalcUI.xaml">
+    <Application.Resources>
+        <!-- Button style -->
+        <Style x:Key="buttonStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="100" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" Margin="2">
+                            <Border.Effect>
+                                <DropShadowEffect BlurRadius="1" Opacity="10" ShadowDepth="3" RenderingBias="Quality" Color="DarkGray"/>                                
+                            </Border.Effect>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0">                                
+                            </ContentPresenter>
+                        </Border>                        
+                    </ControlTemplate>                    
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Button.FontWeight" Value="Bold"></Setter>
+            <Setter Property="Button.FontSize" Value="25"></Setter>            
+        </Style>
+
+    </Application.Resources>
+</Application>
