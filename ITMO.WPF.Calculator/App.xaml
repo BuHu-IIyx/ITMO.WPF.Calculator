@@ -13,14 +13,14 @@
                             <Border.Effect>
                                 <DropShadowEffect BlurRadius="1" Opacity="10" ShadowDepth="3" RenderingBias="Quality" Color="DarkGray"/>                                
                             </Border.Effect>
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0">                                
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0">                                
                             </ContentPresenter>
                         </Border>                        
                     </ControlTemplate>                    
                 </Setter.Value>
             </Setter>
             <Setter Property="Button.FontWeight" Value="Bold"></Setter>
-            <Setter Property="Button.FontSize" Value="25"></Setter>            
+            <Setter Property="Button.FontSize" Value="23"></Setter>            
         </Style>
 
     </Application.Resources>

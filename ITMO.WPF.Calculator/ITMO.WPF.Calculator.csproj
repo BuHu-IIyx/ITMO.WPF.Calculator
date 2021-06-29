@@ -6,4 +6,14 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Digital7.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Digital7.ttf">
+      <CustomToolNamespace>MyWindowsCalculator</CustomToolNamespace>
+    </Resource>
+  </ItemGroup>
+
 </Project>

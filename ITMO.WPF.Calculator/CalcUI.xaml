@@ -5,75 +5,76 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MyWindowsCalculator"
         mc:Ignorable="d"
-        Title="Калькулятор" MinHeight="305" MinWidth="280" Height="563" Width="637">
-    
-        <Grid Margin="1">
+        Title="Калькулятор" Height="465" Width="450" ResizeMode="NoResize" >
+
+    <Grid Margin="1">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="80" />
+            <RowDefinition Height= "*"/>
+        </Grid.RowDefinitions>
+        <Menu Grid.Column="0" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <MenuItem x:Name="MainMenu" Header="Меню">
+                <MenuItem x:Name="AdvancedCalc" Header="Инженерный" />
+                <!--IsCheckable="True" Checked="AdvancedCalc_Checked" Unchecked="AdvancedCalc_Unchecked"/-->
+                <MenuItem x:Name="InfoMenu" Header="О калькуляторе" />
+            </MenuItem>
+        </Menu>
+        <TextBox x:Name="OutputDisplay" Grid.Column="0" Grid.Row="1" Text="0" TextAlignment="Right" 
+                     FontSize="60" VerticalAlignment="Stretch"  Margin="0,0,0,0" Height="80" FontFamily="Digital-7" IsReadOnly="True"/>
+
+
+        <!-- ButtonsPad -->
+        <Grid x:Name="NumPad" Grid.Column="0" Grid.Row="3" Margin="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
+                <ColumnDefinition MinWidth="49"/>
+                <ColumnDefinition Width="2"/>
+                <ColumnDefinition MinWidth="49"/>
+                <ColumnDefinition Width="2"/>
+                <ColumnDefinition MinWidth="49"/>
+                <ColumnDefinition Width="2"/>
+                <ColumnDefinition MinWidth="49"/>
+                <ColumnDefinition Width="2"/>
+                <ColumnDefinition MinWidth="49"/>
+                <ColumnDefinition Width="2"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="20" />
-                <RowDefinition Height="40" />
-                <RowDefinition Height= "*"/>
+                <RowDefinition MinHeight="49" />
+                <RowDefinition Height="2" />
+                <RowDefinition MinHeight="49" />
+                <RowDefinition Height="2" />
+                <RowDefinition MinHeight="49" />
+                <RowDefinition Height="2" />
+                <RowDefinition MinHeight="49" />
+                <RowDefinition Height="2" />
             </Grid.RowDefinitions>
-            <Menu Grid.Column="0" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Left">
-                <MenuItem x:Name="MainMenu" Header="Меню">
-                    <MenuItem x:Name="AdvancedCalc" Header="Инженерный" />
-                    <!--IsCheckable="True" Checked="AdvancedCalc_Checked" Unchecked="AdvancedCalc_Unchecked"/-->
-                </MenuItem>
-            </Menu>
-            <TextBox x:Name="OutputDisplay" Grid.Column="0" Grid.Row="1" Text="0" TextAlignment="Right" 
-                     FontSize="30" VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="1"></TextBox>
-            
-            
-            <!-- ButtonsPad -->
-        <Grid x:Name="NumPad" Grid.Column="0" Grid.Row="3" Margin="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition MinWidth="49"/>
-                        <ColumnDefinition Width="2"/>
-                        <ColumnDefinition MinWidth="49"/>
-                        <ColumnDefinition Width="2"/>
-                        <ColumnDefinition MinWidth="49"/>
-                        <ColumnDefinition Width="2"/>
-                        <ColumnDefinition MinWidth="49"/>
-                        <ColumnDefinition Width="2"/>
-                        <ColumnDefinition MinWidth="49"/>
-                        <ColumnDefinition Width="2"/>
-            </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition MinHeight="49" />
-                        <RowDefinition Height="2" />
-                        <RowDefinition MinHeight="49" />
-                        <RowDefinition Height="2" />
-                        <RowDefinition MinHeight="49" />
-                        <RowDefinition Height="2" />
-                        <RowDefinition MinHeight="49" />
-                        <RowDefinition Height="2" />
-                    </Grid.RowDefinitions>
-                    <Button Grid.Row="0" Grid.Column="0" Style="{StaticResource buttonStyle}">7</Button>
-                    <Button Grid.Row="0" Grid.Column="2" Style="{StaticResource buttonStyle}">8</Button>
-                    <Button Grid.Row="0" Grid.Column="4" Style="{StaticResource buttonStyle}">9</Button>
-                    <Button Grid.Row="2" Grid.Column="0" Style="{StaticResource buttonStyle}">4</Button>
-                    <Button Grid.Row="2" Grid.Column="2" Style="{StaticResource buttonStyle}">5</Button>
-                    <Button Grid.Row="2" Grid.Column="4" Style="{StaticResource buttonStyle}">6</Button>
-                    <Button Grid.Row="4" Grid.Column="0" Style="{StaticResource buttonStyle}">1</Button>
-                    <Button Grid.Row="4" Grid.Column="2" Style="{StaticResource buttonStyle}">2</Button>
-                    <Button Grid.Row="4" Grid.Column="4" Style="{StaticResource buttonStyle}">3</Button>
-                    <Button Grid.Row="6" Grid.Column="0" Style="{StaticResource buttonStyle}">-/+</Button>
-                    <Button Grid.Row="6" Grid.Column="2" Style="{StaticResource buttonStyle}">0</Button>
-                    <Button Grid.Row="6" Grid.Column="4" Style="{StaticResource buttonStyle}">.</Button>
-                    <Button Grid.Row="0" Grid.Column="6" Style="{StaticResource buttonStyle}">/</Button>
-                    <Button Grid.Row="0" Grid.Column="8" Style="{StaticResource buttonStyle}">C</Button>
-                    <Button Grid.Row="2" Grid.Column="6" Style="{StaticResource buttonStyle}">x</Button>
-                    <Button Grid.Row="2" Grid.Column="8" Style="{StaticResource buttonStyle}">Date</Button>
-                    <Button Grid.Row="4" Grid.Column="6" Style="{StaticResource buttonStyle}">+</Button>
-                    <Button Grid.Row="4" Grid.Column="8" Style="{StaticResource buttonStyle}">Exit</Button>
-                    <Button Grid.Row="6" Grid.Column="6" Style="{StaticResource buttonStyle}">-</Button>
-                    <Button Grid.Row="6" Grid.Column="8" Style="{StaticResource buttonStyle}">=</Button>
+            <Button Grid.Row="0" Grid.Column="0" Style="{StaticResource buttonStyle}">7</Button>
+            <Button Grid.Row="0" Grid.Column="2" Style="{StaticResource buttonStyle}">8</Button>
+            <Button Grid.Row="0" Grid.Column="4" Style="{StaticResource buttonStyle}">9</Button>
+            <Button Grid.Row="2" Grid.Column="0" Style="{StaticResource buttonStyle}">4</Button>
+            <Button Grid.Row="2" Grid.Column="2" Style="{StaticResource buttonStyle}">5</Button>
+            <Button Grid.Row="2" Grid.Column="4" Style="{StaticResource buttonStyle}">6</Button>
+            <Button Grid.Row="4" Grid.Column="0" Style="{StaticResource buttonStyle}">1</Button>
+            <Button Grid.Row="4" Grid.Column="2" Style="{StaticResource buttonStyle}">2</Button>
+            <Button Grid.Row="4" Grid.Column="4" Style="{StaticResource buttonStyle}">3</Button>
+            <Button Grid.Row="6" Grid.Column="0" Style="{StaticResource buttonStyle}">-/+</Button>
+            <Button Grid.Row="6" Grid.Column="2" Style="{StaticResource buttonStyle}">0</Button>
+            <Button Grid.Row="6" Grid.Column="4" Style="{StaticResource buttonStyle}">.</Button>
+            <Button Grid.Row="0" Grid.Column="6" Style="{StaticResource buttonStyle}">/</Button>
+            <Button Grid.Row="0" Grid.Column="8" Style="{StaticResource buttonStyle}">C</Button>
+            <Button Grid.Row="2" Grid.Column="6" Style="{StaticResource buttonStyle}">x</Button>
+            <Button Grid.Row="2" Grid.Column="8" Style="{StaticResource buttonStyle}">Date</Button>
+            <Button Grid.Row="4" Grid.Column="6" Style="{StaticResource buttonStyle}">+</Button>
+            <Button Grid.Row="4" Grid.Column="8" Style="{StaticResource buttonStyle}">Exit</Button>
+            <Button Grid.Row="6" Grid.Column="6" Style="{StaticResource buttonStyle}">-</Button>
+            <Button Grid.Row="6" Grid.Column="8" Style="{StaticResource buttonStyle}">=</Button>
 
-                </Grid>
+        </Grid>
 
-            </Grid>
-        
-   
+    </Grid>
+
+
 </Window>
