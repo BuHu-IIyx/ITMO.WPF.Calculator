@@ -233,6 +233,30 @@ namespace MyWindowsCalculator
 
 			return stringAnswer;
 		}
+
+		public static string CalcQuad(double A, double B, double C)
+		{
+			string Result;
+			double D = Math.Pow(B, 2) - (4 * A * C);
+			if( D == 0)
+            {
+                double x = (-1 * B) / (2 * A);
+                Result = Convert.ToString(Math.Round(x, 2));
+			}
+			else if (D > 0)
+            {
+				double x1 = (-1 * B + Math.Sqrt(D)) / (2 * A);
+				double x2 = (-1 * B - Math.Sqrt(D)) / (2 * A);
+				Result = Convert.ToString(Math.Round(x1, 2)) +';'+ Convert.ToString(Math.Round(x2, 2));
+			}
+			else
+            {
+				Result = "í/ä";
+            }
+			return Result;
+		}
+
+
 		//
 		// Called when = is pressed.
 		//

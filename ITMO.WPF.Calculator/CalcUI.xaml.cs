@@ -26,11 +26,12 @@ namespace MyWindowsCalculator
 
 		//private System.ComponentModel.Container components = null;
 		private bool AdvCalcVisibility = false;
+		public ITMO.WPF.Calculator.QuadEquation NewWindow { get; set; }
 
 		public CalcUI()
         {
-            InitializeComponent();			
-			AdvCalc.Visibility = Visibility.Collapsed;
+            InitializeComponent();
+            AdvCalc.Visibility = Visibility.Collapsed;
 			foreach (UIElement c in NumPad.Children)
             {
 				((Button)c).Click += Button_Click;
@@ -47,6 +48,14 @@ namespace MyWindowsCalculator
 			
 			switch (ButtonName)
             {
+				case "AХ²+BX+C":
+					if (NewWindow == null)
+					{
+						NewWindow = new ITMO.WPF.Calculator.QuadEquation();
+						NewWindow.Owner = this;
+						NewWindow.Show();
+					}
+					break;
 				case "3√":
 					OutputDisplay.Text = CalcEngine.CalcCubic();
 					break;
