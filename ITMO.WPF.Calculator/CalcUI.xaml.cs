@@ -21,20 +21,25 @@ namespace MyWindowsCalculator
     /// </summary>
     public partial class CalcUI : Window
     {
-       
-        /// Required designer variable.
-		
-		//private System.ComponentModel.Container components = null;
 
-       
-        public CalcUI()
+		/// Required designer variable.
+
+		//private System.ComponentModel.Container components = null;
+		private bool AdvCalcVisibility = false;
+
+		public CalcUI()
         {
-            InitializeComponent();
-			foreach(UIElement c in NumPad.Children)
+            InitializeComponent();			
+			AdvCalc.Visibility = Visibility.Collapsed;
+			foreach (UIElement c in NumPad.Children)
             {
 				((Button)c).Click += Button_Click;
             }
-        }
+			foreach (UIElement c in AdvCalc.Children)
+			{
+				((Button)c).Click += Button_Click;
+			}
+		}
 
 		private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -42,6 +47,24 @@ namespace MyWindowsCalculator
 			
 			switch (ButtonName)
             {
+				case "3√":
+					OutputDisplay.Text = CalcEngine.CalcCubic();
+					break;
+				case "n!":
+                    OutputDisplay.Text = CalcEngine.CalcFactorial();
+					break;
+				case "x^2":
+					OutputDisplay.Text = CalcEngine.CalcSquare();
+					break;
+				case "1/x":
+					OutputDisplay.Text = CalcEngine.CalcReverseValue();
+					break;
+				case "√":
+					OutputDisplay.Text = CalcEngine.CalcSqrt();
+					break;
+				case "x^n":
+					CalcEngine.CalcOperation(CalcEngine.Operator.ePow);
+					break;
 				case "-/+":
 					OutputDisplay.Text = CalcEngine.CalcSign();
 					break;
@@ -54,7 +77,7 @@ namespace MyWindowsCalculator
 				case "-":
 					CalcEngine.CalcOperation(CalcEngine.Operator.eSubtract);
 					break;
-				case "x":
+				case "×":
 					CalcEngine.CalcOperation(CalcEngine.Operator.eMultiply);
 					break;
 				case "/":
@@ -79,7 +102,31 @@ namespace MyWindowsCalculator
 					OutputDisplay.Text = CalcEngine.CalcNumber(ButtonName);
 					break;
 			}
+			
 
+		}
+
+        private void About_Click(object sender, RoutedEventArgs e)
+        {
+			MessageBox.Show(CalcEngine.GetVersion());
         }
+
+        private void AdvancedCalc_Click(object sender, RoutedEventArgs e)
+        {
+			if (!AdvCalcVisibility)
+            {
+				MainWindow.Height = 590;
+				AdvCalc.Height = 80;
+				AdvCalc.Visibility = Visibility.Visible;
+				AdvCalcVisibility = true;
+			}
+			else
+            {
+				MainWindow.Height = 510;
+				AdvCalc.Height = 0;
+				AdvCalc.Visibility = Visibility.Collapsed;
+				AdvCalcVisibility = false;
+			}
+		}
     }
 }

@@ -14,7 +14,8 @@ namespace MyWindowsCalculator
 			eAdd = 1,
 			eSubtract = 2,
 			eMultiply = 3,
-			eDivide = 4
+			eDivide = 4,
+			ePow = 5
 		}
 
 		//
@@ -22,8 +23,8 @@ namespace MyWindowsCalculator
 		//
 
 		private static double negativeConverter = -1;
-		// TODO: Upgrade the version number to 3.0.1.1
-		private static string versionInfo = "Calculator v2.0.1.1";
+		
+		private static string versionInfo = "Calculator v3.0.1.1";
 
 		//
 		// Module-level Variables.
@@ -127,8 +128,111 @@ namespace MyWindowsCalculator
 			}
 
 			return stringAnswer;
-		}
+        }
+		//
+		// Called when Sqrt is pressed.
+		//
+		public static string CalcSqrt()
+		{
+			double numHold;
 
+			if (stringAnswer != "")
+			{
+				numHold = Convert.ToDouble(stringAnswer);
+                stringAnswer = Convert.ToString(Math.Sqrt(numHold));
+			}
+
+			return stringAnswer;
+		}
+		//
+		// Called when 1/x is pressed.
+		//
+		public static string CalcReverseValue()
+		{
+			double numHold;
+
+			if (stringAnswer != "")
+			{
+				numHold = Convert.ToDouble(stringAnswer);
+				stringAnswer = Convert.ToString(1/numHold);
+			}
+
+			return stringAnswer;
+		}
+		//
+		// Called when x^2 is pressed.
+		//
+		public static string CalcSquare()
+		{
+			double numHold;
+
+			if (stringAnswer != "")
+			{
+				numHold = Convert.ToDouble(stringAnswer);
+				stringAnswer = Convert.ToString(numHold*numHold);
+			}
+
+			return stringAnswer;
+		}
+		//
+		// Called when n! is pressed.
+		//
+		public static string CalcFactorial()
+		{
+			int numHold;
+			if (stringAnswer != "" && !decimalAdded)
+			{
+				numHold = Convert.ToInt32(stringAnswer);
+				if (numHold > 0)
+				{
+					try
+					{
+						int numFactorial = 1;
+						checked
+						{
+							for (int i = 1; i <= numHold; i++)
+							{
+								numFactorial *= i;
+							}
+						}
+						stringAnswer = Convert.ToString(numFactorial);
+					}
+					catch (OverflowException)
+					{
+						stringAnswer = "ERROR (BIG VALUE)";
+					}
+				}
+				else if (numHold == 0)
+				{
+					stringAnswer = "1";
+				}
+				else
+				{
+					stringAnswer = "ERROR";
+				}
+				return stringAnswer;
+			}
+			else
+			{
+				stringAnswer = "ERROR";
+            }
+			return stringAnswer;
+        }
+		//
+		// Called when Cubic is pressed.
+		//
+		public static string CalcCubic()
+		{
+			double numHold;
+
+			if (stringAnswer != "")
+			{
+				numHold = Convert.ToDouble(stringAnswer);
+				stringAnswer = Convert.ToString(Math.Pow(numHold, 1 / 3f));
+			}
+
+			return stringAnswer;
+		}
 		//
 		// Called when = is pressed.
 		//
@@ -166,8 +270,16 @@ namespace MyWindowsCalculator
                         numericAnswer = firstNumber / secondNumber;
                         validEquation = true;
                         break;
-
-                    default:
+					case Operator.ePow:
+						numericAnswer = 1;
+						for (int i = 0; i < secondNumber; i++)
+                        {
+                            numericAnswer *= firstNumber;
+                        }
+                        validEquation = true;
+						break;
+					
+					default:
                         validEquation = false;
                         break;
                 }

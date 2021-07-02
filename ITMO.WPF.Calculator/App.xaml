@@ -19,6 +19,7 @@
                     </ControlTemplate>                    
                 </Setter.Value>
             </Setter>
+            <Setter Property="Background" Value="#87CEEB"/>
             <Setter Property="Button.FontWeight" Value="Bold"></Setter>
             <Setter Property="Button.FontSize" Value="23"></Setter>            
         </Style>
